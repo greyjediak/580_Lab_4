@@ -17,8 +17,8 @@ module traffic_controller(
         SYELLOW    
     } state_t;
     
-    logic state;
-    logic next_state;
+    state_t state;
+    state_t next_state;
     
     // STATE REGISTER
     always_ff @(posedge clk) begin
@@ -28,59 +28,49 @@ module traffic_controller(
             state <= next_state;
     end
     
-    // clear all combinational inputs
-    assign side_req = 0;
-    assign timer_done = 0;
-    
     // NEXT STATE LOGIC
     always_comb begin
         next_state = state;
+        // set all to zero
+        main_green=0; main_yellow=0; main_red=0;
+        side_green=0; side_yellow=0; side_red=0;
         case(state)
             MGREEN: begin
-                side_yellow = 0; // transititoning from yellow walk to drive green
+                side_yellow = 0; // unset from possible previous case
                 main_green = 1; // main state output
                 side_red = 1;
                 //any other outputs should be 0 just in case
-                side_green = 0; main_yellow = 0;
-                side_red = 1;
+                main_red = 0;
                 if(side_req)     // when side_req = 1, main_yellow = 1;
                     next_state = MYELLOW;
             end
             MYELLOW: begin
                 main_green = 0; 
-                side_red = 1;
                 main_yellow = 1; // main state output and transitition from previous state       
-                if (!timer_done) begin 
+                if (timer_done) begin 
                     next_state = SGREEN;
-                    timer_done = 0;
                 end
             end
             SGREEN: begin
-                main_red = 1; main_yellow = 0; // main state output and transition from previous state
-                main_green = 0;
+                main_yellow = 0; main_red = 1;  // main state output and transition from previous state
+                side_yellow = 0;
+                side_green = 1;
                 if (timer_done) begin
                     next_state = SYELLOW;
-                    timer_done = 0; // reset timer before SYELLOW
                 end
            end
-           SYELLOW:
-                // timer reset
+           SYELLOW: begin
+                side_green = 0;
+                // main red is still 1
+                side_yellow = 1;
                 if (timer_done) begin
-                    next_state = SGREEN; 
-                    timer_done = 0; // reset timer
-                    side_req = 0; // unset side_req, not trying to cross the street anymore
+                    next_state = MGREEN; 
                 end
-           default: begin
-                next_state = MGREEN;
-                timer_done = 0;
-                side_req = 0;
            end
+           default:
+                next_state = MGREEN;
            endcase
-
+    end
     // OUTPUT LOGIC
-    
-    // after timer_done, while timer_done != 0, side_green 
-    // side_yellow while main_red = 1;
-    // 
 
 endmodule
