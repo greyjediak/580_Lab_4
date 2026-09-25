@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_multiplier_ext_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_multiplier_ext" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="280.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="340.401 ns"></ZoomEndTime>
+      <Cursor1Time time="330.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="181"></NameColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/tb_multiplier_ext/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/start4" type="logic">
+      <obj_property name="ElementShortName">start4</obj_property>
+      <obj_property name="ObjectShortName">start4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/a4" type="array">
+      <obj_property name="ElementShortName">a4[3:0]</obj_property>
+      <obj_property name="ObjectShortName">a4[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/b4" type="array">
+      <obj_property name="ElementShortName">b4[3:0]</obj_property>
+      <obj_property name="ObjectShortName">b4[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/busy4" type="logic">
+      <obj_property name="ElementShortName">busy4</obj_property>
+      <obj_property name="ObjectShortName">busy4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/done4" type="logic">
+      <obj_property name="ElementShortName">done4</obj_property>
+      <obj_property name="ObjectShortName">done4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/product4" type="array">
+      <obj_property name="ElementShortName">product4[7:0]</obj_property>
+      <obj_property name="ObjectShortName">product4[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/error_cnt" type="array">
+      <obj_property name="ElementShortName">error_cnt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">error_cnt[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/T" type="array">
+      <obj_property name="ElementShortName">T[31:0]</obj_property>
+      <obj_property name="ObjectShortName">T[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/dut4/datapath/accumulator" type="array">
+      <obj_property name="ElementShortName">accumulator[7:0]</obj_property>
+      <obj_property name="ObjectShortName">accumulator[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/dut4/datapath/count" type="array">
+      <obj_property name="ElementShortName">count[2:0]</obj_property>
+      <obj_property name="ObjectShortName">count[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/dut4/datapath/multiplicand" type="array">
+      <obj_property name="ElementShortName">multiplicand[7:0]</obj_property>
+      <obj_property name="ObjectShortName">multiplicand[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_multiplier_ext/dut4/datapath/multiplier" type="array">
+      <obj_property name="ElementShortName">multiplier[3:0]</obj_property>
+      <obj_property name="ObjectShortName">multiplier[3:0]</obj_property>
+   </wvobject>
+</wave_config>

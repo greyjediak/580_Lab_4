@@ -57,12 +57,8 @@ module multiplier_controller(
                     add = 1;
             end
             FINISHED: begin
-                if(mult_finished)begin
-                    next_state = FINISHED;
-                    done = 1;
-                    add = 0;
-                    load = 0;
-               end
+               next_state = IDLE;
+               done = 1;
             end
             default:
                 next_state = IDLE;

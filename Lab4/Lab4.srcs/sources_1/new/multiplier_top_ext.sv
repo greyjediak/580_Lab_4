@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module multiplier_top_ext #(
-    parameter int WIDTH = 4
+    parameter int WIDTH = 8
 )(
     input  logic clk,
     input  logic rst,

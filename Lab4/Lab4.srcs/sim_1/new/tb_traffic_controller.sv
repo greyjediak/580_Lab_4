@@ -8,7 +8,7 @@ module tb_traffic_controller();
     logic timer_done;
     
     logic main_green, main_red, main_yellow;
-    logic side_green, side_red, side_red;
+    logic side_green, side_red, side_yellow;
     
     localparam MGREEN = 2'd0, MYELLOW = 2'd1, SGREEN = 2'd2, SYELLOW = 2'd3;
 

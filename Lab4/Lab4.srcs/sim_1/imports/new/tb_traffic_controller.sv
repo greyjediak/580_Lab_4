@@ -62,7 +62,7 @@ module tb_traffic_controller();
     test_cnt++;
 
     if (dut.state !== MYELLOW || !main_yellow || !side_red) begin
-        $error("MYELLOW failed, state = %d, main_yellow = %d, side_red = %d, expected 01, main_yellow =1, side_red =1", dut.state, main_yellow, side_red);
+        $error("MYELLOW failed");
         error_cnt++;
     end
 

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //
 
-module datapath_ext #(parameter int WIDTH = 4)(
+module datapath_ext #(parameter int WIDTH = 8)(
     input logic clk,
     input logic rst,
     input logic [WIDTH-1:0] a,

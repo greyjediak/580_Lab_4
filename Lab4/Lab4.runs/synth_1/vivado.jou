@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu Sep 24 22:17:00 2026
+# Process ID         : 58656
+# Current directory  : C:/Documents/2026 Fall UA/ECE 580/Lab4/Lab4.runs/synth_1
+# Command line       : vivado.exe -log multiplier_top_ext.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source multiplier_top_ext.tcl
+# Log file           : C:/Documents/2026 Fall UA/ECE 580/Lab4/Lab4.runs/synth_1/multiplier_top_ext.vds
+# Journal file       : C:/Documents/2026 Fall UA/ECE 580/Lab4/Lab4.runs/synth_1\vivado.jou
+# Running On         : ASTRID
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) Ultra 9 185H
+# CPU Frequency      : 3072 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 22
+# Host memory        : 33777 MB
+# Swap memory        : 47244 MB
+# Total Virtual      : 81022 MB
+# Available Virtual  : 14323 MB
+#-----------------------------------------------------------
+source multiplier_top_ext.tcl -notrace
