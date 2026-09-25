@@ -46,7 +46,8 @@ module traffic_controller(
             end
             MYELLOW: begin
                 main_green = 0; 
-                main_yellow = 1; // main state output and transitition from previous state       
+                main_yellow = 1; // main state output and transitition from previous state     
+                side_red = 1;  
                 if (timer_done) begin 
                     next_state = SGREEN;
                 end
@@ -62,6 +63,7 @@ module traffic_controller(
            SYELLOW: begin
                 side_green = 0;
                 // main red is still 1
+                main_red = 1;
                 side_yellow = 1;
                 if (timer_done) begin
                     next_state = MGREEN; 

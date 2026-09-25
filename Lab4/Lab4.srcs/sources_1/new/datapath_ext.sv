@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
-///////////////////////////
-
+//
 
 module datapath_ext #(parameter int WIDTH = 4)(
     input logic clk,
@@ -20,11 +19,28 @@ module datapath_ext #(parameter int WIDTH = 4)(
     
     always_ff @(posedge clk) begin
         
-        if (multiplier[0])
-            accumulator <= accumulator + multiplicand;
-        multiplicand <= multiplicand << 1;
-        multiplier <= multiplier >> 1;
-        count <= count + 1;
-    end
-    
+        if (rst) begin  
+            accumulator <= 0;
+            multiplicand <= 0;
+            multiplier <= 0;
+            count <= 0;
+        end
+            
+        else if (load) begin
+            accumulator <= 0;
+            multiplicand <= {{WIDTH{1'b0}}, a};
+            multiplier <= b;
+            count <= 0;
+        end
+        else if (add) begin
+            if (multiplier[0])
+                accumulator <= accumulator + multiplicand;
+                multiplicand <= multiplicand << 1;
+                multiplier <= multiplier >> 1;
+                count <= count + 1;
+            end
+        end
+        
+        assign finished = (count == WIDTH);
+        assign product = accumulator;
 endmodule

@@ -30,6 +30,7 @@ module multiplier_controller(
     end
     
     always_comb begin
+        next_state = state;
         load = 0;
         busy = 0;
         add = 0;
@@ -45,16 +46,23 @@ module multiplier_controller(
             end
             LOADING: begin
                 load = 1;
-                if (add)
-                    next_state = ADDING;
-            end
-            ADDING:
                 busy = 1;
+                next_state = ADDING;
+            end
+            ADDING: begin
+                busy = 1;
+                if (mult_finished)   
+                    next_state = FINISHED;
+                else    
+                    add = 1;
+            end
             FINISHED: begin
-                if(mult_finished)
+                if(mult_finished)begin
+                    next_state = FINISHED;
                     done = 1;
                     add = 0;
                     load = 0;
+               end
             end
             default:
                 next_state = IDLE;

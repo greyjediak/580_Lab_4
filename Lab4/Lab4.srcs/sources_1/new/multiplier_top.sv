@@ -23,7 +23,7 @@ module multiplier_top(
     .clk(clk),
     .rst(rst),
     .start(start),
-    .finished(finished),
+    .mult_finished(finished),
     .load(load),
     .add(add),
     .busy(busy),
