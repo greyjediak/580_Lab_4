@@ -65,6 +65,7 @@ module tb_multiplier();
             error_cnt++;
         end 
         
+        @(posedge clk);
         @(negedge clk);
         
         
@@ -83,9 +84,9 @@ module tb_multiplier();
             error_cnt++;
         end
         
+        @(posedge clk);
         @(negedge clk);
-        
-        
+
         // Test 1 * 8
         a = 1;
         b = 8;
@@ -101,6 +102,7 @@ module tb_multiplier();
             error_cnt++;
         end
         
+        @(posedge clk);
         @(negedge clk);
         
         
@@ -119,8 +121,8 @@ module tb_multiplier();
             error_cnt++;
         end
         
+        @(posedge clk);
         @(negedge clk);
-        
         
         // Test 5 * 3  = 15 case for lab reqmts waveform
         a = 5;
@@ -146,16 +148,17 @@ module tb_multiplier();
         end
 
         // done should disappear next clock
+        @(posedge clk);
         @(negedge clk);
 
         if (done) begin
             $error("done lasted more than one cycle");
             error_cnt++;
         end
-   
-        
+  
+        @(posedge clk);
+        @(negedge clk);
         // test input changing
-
         a = 9;
         b = 4;
         start = 1;
@@ -177,6 +180,7 @@ module tb_multiplier();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
 
 
@@ -189,6 +193,7 @@ module tb_multiplier();
         @(negedge clk);
         start = 0;
 
+        @(posedge clk);
         @(negedge clk);
 
         // Attempt another start
@@ -205,12 +210,9 @@ module tb_multiplier();
             $error("start while busy affected operation");
             error_cnt++;
         end
-
-        @(negedge clk);
-
-
         // Maximum: 15 * 15
-
+        @(posedge clk);
+        @(negedge clk);
         a = 15;
         b = 15;
         start = 1;
@@ -225,8 +227,8 @@ module tb_multiplier();
             error_cnt++;
         end
         
+        @(posedge clk);
         @(negedge clk);
-        
         
         // Display results
         if (error_cnt == 0)

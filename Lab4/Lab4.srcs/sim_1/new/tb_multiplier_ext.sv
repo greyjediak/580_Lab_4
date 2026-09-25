@@ -72,20 +72,27 @@ module tb_multiplier_ext();
         @(negedge clk);
         rst = 0;
 
-    // WDITH 4 multiply by 0 test
+
+     WDITH 4 multiply by 0 test
         a4 = 0;
         b4 = 0;
         start4 = 1;
 
         @(negedge clk);
         start4 = 0;
+
         wait(done4 == 1);
+
         if (product4 !== 0) begin
             $error("WIDTH=4: 0 * 0 failed");
             error_cnt++;
         end
+
+        // Allow controller to return from FINISHED to IDLE
+        @(posedge clk);
         @(negedge clk);
         
+
         // WIDTH = 4 multiply by 1 test
         a4 = 7;
         b4 = 1;
@@ -102,6 +109,7 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
 
 
@@ -127,19 +135,17 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
-        @(negedge clk);
+        // done should disappear after FINISHED -> IDLE
+        @(posedge clk);
+        #1;
 
         if (done4 !== 0) begin
             $error("WIDTH=4: done longer than one cycle");
             error_cnt++;
         end
 
-
-        // ========================================
-        // WIDTH = 4
-        // maximum
-        // ========================================
-
+        @(negedge clk);
+// WIDTH = 4 maximum
         a4 = 15;
         b4 = 15;
         start4 = 1;
@@ -155,7 +161,9 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
+
 
     // Width = 8 0*0 test
         a8 = 0;
@@ -172,7 +180,9 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
+
 
 // Width 8 multiply by 1 test
         a8 = 173;
@@ -190,7 +200,9 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
+
 
 // Widht 8 tests
         a8 = 100;
@@ -215,12 +227,17 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
-        @(negedge clk);
+        // done should disappear after FINISHED -> IDLE
+        @(posedge clk);
+        #1;
 
         if (done8 !== 0) begin
             $error("WIDTH=8: done longer than one cycle");
             error_cnt++;
         end
+
+        @(negedge clk);
+
 
 // TEST WDTH 8 maximum
         a8 = 255;
@@ -238,10 +255,12 @@ module tb_multiplier_ext();
             error_cnt++;
         end
 
+        @(posedge clk);
         @(negedge clk);
 
+
         if (error_cnt == 0)
-            $display("All %d tests passed", test_cnt);
+            $display("All extension tests passed");
         else
             $display("Tests failed with %0d errors", error_cnt);
 
